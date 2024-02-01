@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 
-def create_overlapping_movie(input_folder, output_path, fade_factor=0.8, fps=1):
+def create_overlapping_movie(input_folder, output_path, fade_factor=0, fps=1):
     # Get a list of all image files in the folder
     image_files = [file for file in os.listdir(input_folder) if file.lower().endswith(('.jpg', '.jpeg', '.png'))]
     image_files.sort()  # Sort the files to ensure the correct order
@@ -45,5 +45,5 @@ def create_overlapping_movie(input_folder, output_path, fade_factor=0.8, fps=1):
 
 # Example usage with fps set to 1 frame per second
 input_folder = 'BTP4/Centroids'
-output_path = 'overlapping_movie_with_centroids_1fps.avi'
+output_path = 'overlapping_movie_with_centroids_1fps_no_previouschrome'.avi'
 create_overlapping_movie(input_folder, output_path, fps=1)

@@ -11,7 +11,7 @@ _, binary_frame = cv2.threshold(frame, 128, 255, cv2.THRESH_BINARY)
 
 # Label connected components in the binary image
 label_im = label(binary_frame)
-
+print(label_im)
 # Get region properties for each labeled component
 regions = regionprops(label_im)
 
