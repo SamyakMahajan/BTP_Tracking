@@ -18,8 +18,9 @@ def overlay_red_dots(image_path, csv_file_path, output_path):
     # Save the image with overlaid red dots
     cv2.imwrite(output_path, image)
 
-for i in range(61):
-    image_path = 'BTP4/Img_{}.png'.format(i)
-    csv_file_path = 'BTP4/CSVs/particle_data_Img_{}.csv'.format(i)
-    output_path = 'BTP4/Centroids/image_with_red_dots_Img_{}.jpg'.format(i)
+for i in range(1,50):
+    image_path = 'ExpFrames/frame{}.jpg'.format(i)
+    csv_file_path = 'ExpFrames/CSVs/cluster_data_frame{}.csv'.format(i)
+    output_path = 'ExpFrames/Centroids/image_with_red_dots_frame{}.jpg'.format(i)
     overlay_red_dots(image_path, csv_file_path, output_path)
+    print("image for frame {} saved in centroids".format(i))

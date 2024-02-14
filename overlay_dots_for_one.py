@@ -19,8 +19,8 @@ def overlay_red_dots(image_path, csv_file_path, output_path):
     cv2.imwrite(output_path, image)
 
 # Example usage
-image_path = 'BTP4/Img_1.png'
-csv_file_path = 'BTP4/CSVs/particle_data_Img_1.csv'
-output_path = 'image_with_red_dots_Img_1.jpg'
+image_path = 'ExpFrames/frame1.jpg'
+csv_file_path = 'ExpFrames/CSVs/cluster_data_frame1.csv'
+output_path = 'image_with_red_dots_frame1.jpg'
 
 overlay_red_dots(image_path, csv_file_path, output_path)
