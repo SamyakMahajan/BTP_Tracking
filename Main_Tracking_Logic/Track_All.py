@@ -15,7 +15,7 @@ def import_keys(csv_file_path):
 
 def Find_Children(image_path, csv_file_path, output_path,frame_count):
     # Read the original image
-    Label_key_relation=import_keys('../BTP4/Keys/Keys_{}.csv'.format(frame_count))
+    Label_key_relation=import_keys('../ExpFrames/Keys/Keys_{}.csv'.format(frame_count))
     #currkey represents the key that a new cluster would be given
     currKey=0
     # print()
@@ -196,16 +196,16 @@ def Find_Children(image_path, csv_file_path, output_path,frame_count):
     key_df = pd.DataFrame(list(Next_Frame_Label_Key_Relation.items()), columns=['Id', 'Key'])
 
     # Save the DataFrame to a CSV file
-    key_df.to_csv('../BTP4/Keys/Keys_{}.csv'.format(frame_count+1), index=False)
+    key_df.to_csv('../ExpFrames/Keys/Keys_{}.csv'.format(frame_count+1), index=False)
     
-for i in range(0,61):
-#     image_path = '../BTP4/Labeled_Images/labeled_image_1.png'
-# csv_file_path = '../BTP4/CSVs/particle_data_Img_2.csv'
+for i in range(1,50):
+#     image_path = '../ExpFrames/Labeled_Images/labeled_image_1.png'
+# csv_file_path = '../ExpFrames/CSVs/particle_data_Img_2.csv'
 # output_path = 'centroids_of_Img_2_on_labeled_image_1.jpg'
 
-    image_path = '../BTP4/Labeled_Images/labeled_image_{}.png'.format(i)
-    csv_file_path = '../BTP4/CSVs/particle_data_Img_{}.csv'.format(i+1)
-    output_path = 'Centroids_On_Labeled_Previous_Image/centroids_of_Img_{}_on_labeled_image_{}.jpg'.format(i+1,i)
+    image_path = '../ExpFrames/Labeled_images/labeled_image_{}.png'.format(i)
+    csv_file_path = '../ExpFrames/CSVs/cluster_data_frame{}.csv'.format(i+1)
+    output_path = '/ExpFrames/Centroids_On_Labeled_Previous_Image/centroids_of_Img_{}_on_labeled_image_{}.jpg'.format(i+1,i)
     Find_Children(image_path, csv_file_path, output_path,i)
 
 print("completed!")

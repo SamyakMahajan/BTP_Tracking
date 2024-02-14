@@ -19,7 +19,7 @@ for key in range(30,60):
         filtered_row = key_df[key_df['Key'] == key_to_find]
         if not filtered_row.empty:
             label_value = filtered_row['Id'].values[0]
-            print(f"The value for the key {key_to_find} in frame {i} is: {label_value}")
+            print(f"The Id for the key {key_to_find} in frame {i} is: {label_value}")
         else:
             print(f"No entry found for the key {key_to_find} in frame {i}")
             break
