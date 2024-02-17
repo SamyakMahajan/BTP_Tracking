@@ -4,16 +4,19 @@ import numpy as np
 import pandas as pd
 import os
 
-for key in range(30,60):
-    os.mkdir('Cluster_Tracks/Cluster_{}'.format(key))
+for key in range(1,70):
+    try:
+        os.mkdir('Cluster_Tracks/Exp_Cluster_{}'.format(key))
+    except:
+        pass
     key_to_find=key
     # Load the image
-    for i in range(62):
-        image_path = '../../BTP4/Labeled_Images/labeled_image_{}.png'.format(i)
+    for i in range(1,50):
+        image_path = '../../ExpFrames/Labeled_images/labeled_image_{}.png'.format(i)
         image = cv2.imread(image_path)
 
-        centroid_df=pd.read_csv('../../BTP4/CSVs/particle_data_Img_{}.csv'.format(i))
-        key_df=pd.read_csv('../../BTP4/Keys/Keys_{}.csv'.format(i))
+        centroid_df=pd.read_csv('../../ExpFrames/CSVs/cluster_data_frame{}.csv'.format(i))
+        key_df=pd.read_csv('../../ExpFrames/Keys/Keys_{}.csv'.format(i))
         
         
         filtered_row = key_df[key_df['Key'] == key_to_find]
@@ -37,7 +40,7 @@ for key in range(30,60):
 
         # Save the final image
         
-        output_image_path = 'Cluster_Tracks/Cluster_{}/result_image_{}.png'.format(key_to_find,i)  # Replace with the desired output path
+        output_image_path = 'Cluster_Tracks/Exp_Cluster_{}/result_frame_{}.png'.format(key_to_find,i)  # Replace with the desired output path
         cv2.imwrite(output_image_path, result)
 
         # plt.show()

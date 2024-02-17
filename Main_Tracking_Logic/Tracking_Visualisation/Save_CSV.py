@@ -2,7 +2,7 @@ import cv2
 import pandas as pd
 import os
 
-for key in range(1,2):
+for key in range(32,33):
     # os.mkdir('Cluster_CSVs/Cluster_{}'.format(key))
 
     Frame_dict = {}
@@ -19,11 +19,16 @@ for key in range(1,2):
         filtered_row = key_df[key_df['Key'] == key_to_find]
         
         if not filtered_row.empty:
-            label_value = filtered_row['Id'].values[0]
-            print(f"The value for the key {key_to_find} in frame {image_index} is: {label_value}")
-            
+            label_value_in_this_frame = filtered_row['Id'].values[0]
+            print(f"The value for the key {key_to_find} in frame {image_index} is: {label_value_in_this_frame}")
+            ####THERE IS AN ERROR THAT NEEDS TO BE FIXED HERE!!!!! 
+            # MAKE SURE TO WRITE CODE SUCH THAT IT DOESNT NEED THE FOLLOWING CONTINUE STATEMENT!!!
             # Assuming columns are 'Id', 'Centroid_x', 'Centroid_y', 'Area', 'Eccentricity' in centroid_df
-            Frame_dict[image_index] = centroid_df[centroid_df['Id'] == label_value].iloc[0].to_dict()
+            if(centroid_df[centroid_df['Id'] == label_value_in_this_frame].empty):
+                continue
+            Frame_dict[image_index] = centroid_df[centroid_df['Id'] == label_value_in_this_frame].iloc[0].to_dict()
+            # print(centroid_df[centroid_df['Id'] == label_value_in_this_frame])
+            # centroid_df[centroid_df['Id'] == label_value_in_this_frame].iloc[0].to_dict()
         else:
             print(f"No entry found for the key {key_to_find} in frame {image_index}")
             break
@@ -32,7 +37,7 @@ for key in range(1,2):
     frame_df = pd.DataFrame.from_dict(Frame_dict, orient='index')
 
     # Save the DataFrame to a CSV file
-    output_csv_path = 'ExpFrames/Cluster_CSVs/keys_data_{}.csv'.format(key_to_find)  # Replace with the desired output path
+    output_csv_path = '../../ExpFrames/Cluster_CSVs/keys_data_{}.csv'.format(key_to_find)  # Replace with the desired output path
     frame_df.to_csv(output_csv_path, index_label='Frame')
 
     print("CSV file created at:", output_csv_path)
