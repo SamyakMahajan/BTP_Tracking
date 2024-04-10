@@ -25,7 +25,7 @@ plt.figure(figsize=(8, 6))  # Adjust figure size as needed
 # Determine bin edges
 ecc_bins = np.linspace(eccentricity_array.min(), eccentricity_array.max(), 20)
 area_bins = np.linspace(area_array.min(), area_array.max(), 20)
-plt.hist2d(eccentricity_array, area_array, bins=[ecc_bins, area_bins], cmap='plasma', cmin=1)
+plt.hist2d(eccentricity_array, area_array, bins=[ecc_bins, area_bins], cmap='inferno', cmin=1)
 plt.colorbar(label='Count')  # Show a color bar indicating the counts in each bin
 
 plt.title('Accumulated Eccentricity vs. Area Heatmap')
@@ -33,7 +33,7 @@ plt.xlabel('Eccentricity')
 plt.ylabel('Area')
 
 # Save the plot as a PNG file
-plt.savefig('results/Graphs/eccvsA/eccentricity_area_heatmap_accumulated_plasma.png', dpi=300)
+plt.savefig('results/Graphs/eccvsA/eccentricity_area_heatmap_accumulated_inferno.png', dpi=300)
 
 # Optionally clear the current figure
 plt.clf()

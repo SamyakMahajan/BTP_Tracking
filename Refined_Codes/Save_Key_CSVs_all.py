@@ -2,7 +2,7 @@ import cv2
 import pandas as pd
 import os
 # 53731
-for key in range(25000,30000):
+for key in range(1,50):
     # os.mkdir('Cluster_CSVs/Cluster_{}'.format(key))
 
     Frame_dict = {}

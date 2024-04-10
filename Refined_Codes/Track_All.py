@@ -15,7 +15,7 @@ def import_keys(csv_file_path):
 
 def Find_Children(image_path, csv_file_path, output_path,frame_count):
     # Read the original image
-    Label_key_relation=import_keys('btp/Keys/Keys_{}.csv'.format(frame_count))
+    Label_key_relation=import_keys('results/Keys/Keys_{}.csv'.format(frame_count))
     #currkey represents the key that a new cluster would be given
     currKey=0
     # print()
@@ -196,15 +196,15 @@ def Find_Children(image_path, csv_file_path, output_path,frame_count):
     key_df = pd.DataFrame(list(Next_Frame_Label_Key_Relation.items()), columns=['Id', 'Key'])
 
     # Save the DataFrame to a CSV file
-    key_df.to_csv('btp/Keys/Keys_{}.csv'.format(frame_count+1), index=False)
+    key_df.to_csv('results/Keys/Keys_{}.csv'.format(frame_count+1), index=False)
     
-for i in range(7620,10000):
+for i in range(1,49):
 #     image_path = 'btp/Labeled_Images/labeled_image_1.png'
 # csv_file_path = 'btp/CSVs/particle_data_Img_2.csv'
 # output_path = 'centroids_of_Img_2_on_labeled_image_1.jpg'
 
-    image_path = 'btp/Labeled_images/labeled_image_{}.png'.format(i)
-    csv_file_path = 'btp/CSVs/cluster_data_frame{}.csv'.format(i+1)
+    image_path = '../results/Labeled_images/labeled_image_{}.png'.format(i)
+    csv_file_path = '/CSVs/cluster_data_frame{}.csv'.format(i+1)
     output_path = 'btp/Centroids_On_Labeled_Previous_Image/centroids_of_Img_{}_on_labeled_image_{}.jpg'.format(i+1,i)
     Find_Children(image_path, csv_file_path, output_path,i)
 
