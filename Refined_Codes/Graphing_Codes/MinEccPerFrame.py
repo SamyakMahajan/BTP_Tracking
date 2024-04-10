@@ -10,7 +10,7 @@ for i in range(1, 50):
     # Step 1: Read the CSV file
     file_path = f'results/CSVs/cluster_data_frame{i}.csv'
     df = pd.read_csv(file_path)
-    max_area = df['Eccentricity'].mean()
+    max_area = df['Eccentricity'].min()
 
     # Append the maximum area for the current dataframe to the list
     area_list.append(max_area)
@@ -24,7 +24,7 @@ plt.figure(figsize=(12, 6))  # Adjust figure size as needed
 # Plotting the data points
 plt.plot(range(1, 50), area_array, marker='o', linestyle='-', color='b')
 
-plt.title('Mean eccentricity Per Frame')
+plt.title('Min eccentricity Per Frame')
 plt.ylabel('eccentricity')
 plt.xlabel('Frame Number')
 
@@ -32,7 +32,7 @@ plt.xlabel('Frame Number')
 plt.xticks(rotation=45)
 
 # Save the plot as a PNG file
-plt.savefig('results/Graphs/MeanEcc/Mean_ecc.png', dpi=300)
+plt.savefig('results/Graphs/MinEcc/Min_ecc.png', dpi=300)
 
 # Optionally clear the current figure
 plt.clf()

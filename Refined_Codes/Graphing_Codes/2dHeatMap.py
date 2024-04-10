@@ -23,8 +23,8 @@ area_array = np.array(area_list)
 # Plot Eccentricity vs. Area as a 2D heatmap
 plt.figure(figsize=(8, 6))  # Adjust figure size as needed
 # Determine bin edges
-ecc_bins = np.linspace(eccentricity_array.min(), eccentricity_array.max(), 50)
-area_bins = np.linspace(area_array.min(), area_array.max(), 50)
+ecc_bins = np.linspace(eccentricity_array.min(), eccentricity_array.max(), 20)
+area_bins = np.linspace(area_array.min(), area_array.max(), 20)
 plt.hist2d(eccentricity_array, area_array, bins=[ecc_bins, area_bins], cmap='plasma', cmin=1)
 plt.colorbar(label='Count')  # Show a color bar indicating the counts in each bin
 
